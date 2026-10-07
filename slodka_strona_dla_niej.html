@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐾 Dla Ciebie 💗</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+  color:#5d4968;
+  background:
+    radial-gradient(ellipse at 8% 8%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.45) 13%, transparent 34%),
+    radial-gradient(ellipse at 94% 13%, rgba(188,239,255,.82) 0%, rgba(188,239,255,.3) 17%, transparent 39%),
+    radial-gradient(ellipse at 12% 92%, rgba(255,183,218,.58) 0%, transparent 34%),
+    radial-gradient(ellipse at 88% 88%, rgba(213,190,255,.5) 0%, transparent 36%),
+    linear-gradient(135deg,#ffd9eb 0%,#f9e3f5 28%,#dff6ff 59%,#e7dcff 100%);
+  position:relative;
+}
+body:before{
+  content:""; position:fixed; inset:-15%; pointer-events:none; z-index:0;
+  opacity:.34;
+  background:
+    radial-gradient(ellipse at 30% 35%, rgba(255,255,255,.9) 0 7%, transparent 18%),
+    radial-gradient(ellipse at 72% 65%, rgba(255,255,255,.7) 0 5%, transparent 17%),
+    radial-gradient(ellipse at 52% 8%, rgba(255,196,224,.42) 0 5%, transparent 19%);
+  filter:blur(18px);
+  animation:softGlow 12s ease-in-out infinite alternate;
+}
+body:after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  opacity:.22;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.95) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,.55) 0 1px, transparent 1.5px);
+  background-size:34px 34px, 61px 61px;
+  background-position:0 0, 17px 25px;
+}
+@keyframes softGlow{
+  0%{transform:scale(1) translate3d(-1%,0,0);opacity:.28}
+  100%{transform:scale(1.08) translate3d(1%,1%,0);opacity:.42}
+}
+header{text-align:center;padding:28px 15px 10px}
+h1{margin:0;font-size:clamp(30px,6vw,54px);color:#ef7fb2;text-shadow:0 3px #fff}
+.subtitle{font-size:17px;margin-top:7px}
+.wrap{max-width:900px;margin:auto;padding:10px 18px 50px}
+.stats{
+ display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px auto 18px
+}
+.pill{
+ background:#fff;border:3px solid #ffc1dc;border-radius:999px;padding:10px 18px;
+ box-shadow:0 7px 18px #c986aa22;font-weight:700
+}
+.game{
+ background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(255,255,255,.58));backdrop-filter:blur(12px);
+ border:3px solid #fff;border-radius:32px;padding:25px;
+ box-shadow:0 20px 55px rgba(128,91,145,.13), inset 0 1px 0 rgba(255,255,255,.9);text-align:center
+}
+.cat-area{position:relative;min-height:390px;display:flex;align-items:center;justify-content:center}
+.cat-button{
+ border:0;background:transparent;cursor:pointer;position:relative;
+ width:min(330px,80vw);aspect-ratio:1;transition:transform .12s;
+ filter:drop-shadow(0 16px 15px #a96f8a33);
+}
+.cat-button:hover{transform:scale(1.04)}
+.cat-button:active{transform:scale(.93)}
+.cat{
+ width:100%;height:100%;display:block;
+}
+.cat-pink{--fur:#ffb6d5;--fur2:#f58bb9;--inner:#ffd0e2;--collar:#fff}
+.cat-blue{--fur:#a6e5f7;--fur2:#68c9e7;--inner:#d4f5ff;--collar:#fff}
+.cat-purple{--fur:#ceb9f7;--fur2:#a384e6;--inner:#eadfff;--collar:#fff}
+.cat-strawberry{--fur:#ff9eb4;--fur2:#ee6688;--inner:#ffd0da;--collar:#fff}
+.cat-honey{--fur:#ffd98f;--fur2:#efa94f;--inner:#ffe9bd;--collar:#fff}
+.cat-night{--fur:#8998d9;--fur2:#596bb8;--inner:#c1cafa;--collar:#eef1ff}
+.cat-cloud{--fur:#edf9ff;--fur2:#acdff3;--inner:#fff;--collar:#8ed7ef}
+.cat-moon{--fur:#b3ddf7;--fur2:#76b9df;--inner:#e4f5ff;--collar:#ffd86a}
+.cat-face{fill:#fffafd;stroke:#ffffff;stroke-width:2}
+.inner-ear{fill:var(--inner);opacity:.95}
+.eye-shine{fill:#fff}
+.blush{fill:#ff8fb7;opacity:.34}
+.collar{fill:var(--collar);opacity:.98}
+.bow{fill:var(--fur2)}
+.bow-dot{fill:#fff}
+.star{fill:#fff6a8}
+.cat{filter:drop-shadow(0 14px 10px #8d668522)}
+.cat .body{stroke:var(--fur2);stroke-width:4}
+.cat .paw{stroke-width:4}
+.cat .eye{transition:fill .2s}
+.cat-night .cat-face{fill:#f8f7ff}.cat-night .eye{fill:#343a67}
+.cat-cloud .cat-face{fill:#ffffff}.cat-cloud .eye{fill:#55727d}
+.cat-moon .collar{fill:#ffe07b}.cat-moon .bow-dot{fill:#fff}
+.cat-honey .bow{fill:#e8a84d}.cat-strawberry .bow{fill:#fff}.cat-purple .bow{fill:#f3d9ff}
+.cat-blue .bow{fill:#fff}
+.ear,.body{fill:var(--fur)}
+.eye{fill:#59485e}.nose{fill:#f07fa7}.mouth{fill:none;stroke:#59485e;stroke-width:5;stroke-linecap:round}
+.paw{fill:var(--fur);stroke:var(--fur2);stroke-width:5}
+.heart{
+ position:fixed;pointer-events:none;font-size:28px;z-index:10;
+ animation:float 1.2s ease-out forwards;
+}
+@keyframes float{0%{opacity:1;transform:translate(0,0) scale(.7)}
+100%{opacity:0;transform:translate(var(--x),-130px) scale(1.35) rotate(var(--r))}}
+.clickme{font-size:20px;color:#e778ae;font-weight:800}
+.message{
+ min-height:58px;margin:15px auto 5px;max-width:650px;
+ background:#fff;border:3px solid #bfeafa;border-radius:22px;padding:14px 18px;
+ font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;
+ box-shadow:0 8px 20px #7fc5dc22
+}
+.shop-title{text-align:center;color:#73aeca;font-size:28px;margin:30px 0 12px}
+.shop{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.card{
+ background:#fff;border:3px solid #ffd0e4;border-radius:22px;padding:14px;
+ text-align:center;box-shadow:0 8px 20px #a77b9822
+}
+.mini{width:105px;height:105px;margin:auto}
+.card h3{margin:5px 0;color:#e47ead}
+.card button{
+ border:0;border-radius:999px;padding:9px 16px;background:#9edff2;color:#3f6370;
+ font-weight:800;cursor:pointer
+}
+.card button:hover{background:#7fd2eb}
+.card button:disabled{opacity:.5;cursor:not-allowed}
+.owned{background:#ffc2dc!important;color:#6e4d5d!important}
+.card{transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-4px);box-shadow:0 12px 26px #a77b9830}
+.card .mini{filter:drop-shadow(0 7px 7px #8b6b8b22)}
+.cat{transition:filter .2s,transform .2s}.skin-equip{animation:skinEquip .35s ease}@keyframes skinEquip{0%{transform:scale(.8) rotate(-3deg)}60%{transform:scale(1.08) rotate(3deg)}100%{transform:scale(1) rotate(0)}}
+
+.cat-strawberry .star{fill:#fff}
+.cat-honey .star{fill:#fff1a8}
+.cat-night .star{fill:#dce4ff}
+.cat-cloud .star{fill:#ffffff}
+.cat-moon .star{fill:#fff2a2}
+.cat-blue .bow{fill:#ffffff}
+.cat-purple .bow{fill:#f1d7ff}
+.cat-strawberry .bow{fill:#fff}
+.cat-honey .bow{fill:#e8a64c}
+.cat-night .bow{fill:#aeb9f0}
+.cat-cloud .bow{fill:#8bd3ed}
+.cat-moon .bow{fill:#ffd86a}
+
+.skin-equip{animation:skinEquip .42s cubic-bezier(.2,.9,.25,1)}
+@keyframes skinEquip{
+  0%{transform:scale(.78) rotate(-5deg)}
+  55%{transform:scale(1.08) rotate(3deg)}
+  100%{transform:scale(1) rotate(0)}
+}
+
+.skin-accessory{pointer-events:none}
+.accessory-crown,.accessory-flower,.accessory-stars,.accessory-scarf,.accessory-dot,.accessory-flower-center{display:none}
+.cat-night .accessory-stars{display:block;fill:#fff3a8}
+.cat-honey .accessory-flower{display:block;fill:#fff0a6}
+.cat-honey .accessory-flower-center{display:block;fill:#efaa54}
+.cat-cloud .accessory-flower{display:block;fill:#fff}
+.cat-cloud .accessory-flower-center{display:block;fill:#9edff2}
+.cat-moon .accessory-crown{display:block;fill:#ffe07b;stroke:#d7a93f;stroke-width:2}
+.cat-moon .accessory-dot{display:block;fill:#fff}
+.cat-strawberry .accessory-scarf{display:block;fill:#fff}
+.cat-purple .accessory-flower{display:block;fill:#f5d7ff}
+.cat-purple .accessory-flower-center{display:block;fill:#d88bea}
+.cat-blue .accessory-stars{display:block;fill:#fff}
+.cat-pink .accessory-flower{display:block;fill:#fff}
+.cat-pink .accessory-flower-center{display:block;fill:#ff7fb1}
+.skin-tag{font-size:12px;color:#9c7fa2;margin:3px 0 8px}
+.footer{text-align:center;margin-top:25px;font-size:13px;opacity:.7}
+.toast{
+ position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.8);
+ background:#fff;border:4px solid #ffb8d5;border-radius:28px;padding:25px;
+ max-width:430px;width:calc(100% - 40px);text-align:center;z-index:30;
+ box-shadow:0 20px 70px #6e526b55;opacity:0;pointer-events:none;
+ transition:.25s
+}
+.toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.toast .big{font-size:48px}
+.toast h2{color:#ec79ad;margin:5px}
+.toast p{font-size:19px;font-weight:700}
+.toast button{border:0;background:#9edff2;padding:10px 22px;border-radius:999px;font-weight:800;cursor:pointer}
+@media(max-width:550px){.cat-area{min-height:310px}.game{padding:15px}.shop{grid-template-columns:1fr 1fr}}
+.reset-btn{margin-top:10px;border:0;background:transparent;color:#a98da7;font-size:12px;cursor:pointer;text-decoration:underline;opacity:.7}
+.reset-btn:hover{opacity:1}
+
+.cat.blink .eye{
+  ry:2 !important;
+  transition:ry .04s linear;
+}
+
+
+.bg-decor{
+ position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.bg-decor:before,.bg-decor:after{
+ content:"";position:absolute;border-radius:50%;filter:blur(2px);
+}
+.bg-decor:before{
+ width:330px;height:330px;left:-150px;top:34%;
+ background:radial-gradient(circle,rgba(255,255,255,.46),rgba(255,168,211,.18) 48%,transparent 72%);
+ animation:orbMove 14s ease-in-out infinite alternate;
+}
+.bg-decor:after{
+ width:420px;height:420px;right:-190px;bottom:2%;
+ background:radial-gradient(circle,rgba(255,255,255,.48),rgba(159,222,247,.2) 45%,transparent 72%);
+ animation:orbMove2 17s ease-in-out infinite alternate;
+}
+.bg-decor span{
+ position:absolute;display:block;line-height:1;
+ animation:bgFloat 7s ease-in-out infinite;
+ text-shadow:0 4px 18px rgba(255,255,255,.8);
+}
+.bg-decor .b1{left:4%;top:18%;font-size:34px;color:rgba(255,139,187,.48)}
+.bg-decor .b2{right:5%;top:27%;font-size:29px;color:rgba(108,199,232,.42);animation-delay:-2s}
+.bg-decor .b3{left:8%;bottom:18%;font-size:24px;color:rgba(255,157,201,.45);animation-delay:-4s}
+.bg-decor .b4{right:9%;bottom:14%;font-size:35px;color:rgba(111,202,234,.38);animation-delay:-1s}
+.bg-decor .s1{left:20%;top:10%;font-size:17px;color:rgba(255,203,103,.55);animation-delay:-3s}
+.bg-decor .s2{right:22%;top:11%;font-size:17px;color:rgba(255,157,202,.48);animation-delay:-5s}
+@keyframes bgFloat{
+ 0%,100%{transform:translateY(0) rotate(-6deg) scale(1)}
+ 50%{transform:translateY(-12px) rotate(6deg) scale(1.08)}
+}
+@keyframes orbMove{
+ 0%{transform:translate3d(0,0,0) scale(.9)}
+ 100%{transform:translate3d(100px,-45px,0) scale(1.12)}
+}
+@keyframes orbMove2{
+ 0%{transform:translate3d(0,0,0) scale(1)}
+ 100%{transform:translate3d(-80px,-60px,0) scale(.9)}
+}
+
+/* Sweet-message bubble */
+.message{
+  position:absolute !important;
+  left:50% !important;
+  top:18px !important;
+  transform:translateX(-50%) translateY(-8px) !important;
+  width:min(340px,78%) !important;
+  min-height:42px;
+  box-sizing:border-box;
+  padding:11px 16px !important;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:18px;
+  background:rgba(255,255,255,.62);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 10px 28px rgba(115,83,137,.14), inset 0 1px 0 rgba(255,255,255,.85);
+  color:#76556f;
+  font-size:15px;
+  line-height:1.35;
+  text-align:center;
+  z-index:8;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .22s ease, transform .22s ease;
+}
+.message.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0) !important;
+}
+
+.container,.game,.shop-wrap,.footer,.toast{position:relative;z-index:1}
+
+</style>
+</head>
+<body>
+<div class="bg-decor" aria-hidden="true">
+ <span class="b1">♡</span><span class="b2">♡</span>
+ <span class="b3">♥</span><span class="b4">♡</span>
+ <span class="s1">✦</span><span class="s2">✧</span>
+</div>
+
+<header>
+  <h1>💗 Dla Ciebie 💗</h1>
+  <div class="subtitle">Klikaj kotka, zbieraj łapki i odkrywaj słodkie wiadomości 🐾</div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="pill">🐾 Łapki: <span id="paws">0</span></div>
+  </div>
+
+  <section class="game">
+    <div class="cat-area">
+      <button class="cat-button" id="catButton" aria-label="Kliknij kotka">
+        <svg class="cat cat-pink" viewBox="0 0 300 300">
+  <path class="ear" d="M62 112C50 79 50 48 61 27C83 37 104 56 117 80C97 88 78 100 62 112Z"/>
+  <path class="ear" d="M238 112C250 79 250 48 239 27C217 37 196 56 183 80C203 88 222 100 238 112Z"/>
+  <path class="inner-ear" d="M70 78C67 60 67 49 68 43C82 50 94 61 102 74C90 77 80 82 70 88Z"/>
+  <path class="inner-ear" d="M230 78C233 60 233 49 232 43C218 50 206 61 198 74C210 77 220 82 230 88Z"/>
+  <circle class="body" cx="150" cy="162" r="106"/>
+  <ellipse class="cat-face" cx="150" cy="158" rx="83" ry="73"/>
+  <ellipse class="eye" cx="117" cy="153" rx="10" ry="13"/><ellipse class="eye" cx="183" cy="153" rx="10" ry="13"/>
+  <circle class="eye-shine" cx="114" cy="149" r="4"/><circle class="eye-shine" cx="180" cy="149" r="4"/>
+  <path class="nose" d="M141 171Q150 164 159 171Q157 180 150 182Q143 180 141 171Z"/>
+  <path class="mouth" d="M150 180Q145 190 136 188M150 180Q155 190 164 188"/>
+  <ellipse class="paw" cx="83" cy="229" rx="35" ry="26"/><ellipse class="paw" cx="217" cy="229" rx="35" ry="26"/>
+  <circle class="blush" cx="96" cy="182" r="10"/><circle class="blush" cx="204" cy="182" r="10"/>
+  <path class="collar" d="M102 224Q150 249 198 224Q191 244 150 252Q109 244 102 224Z"/>
+  <path class="bow" d="M150 239L126 226Q111 222 113 238Q115 251 146 243ZM150 239L174 226Q189 222 187 238Q185 251 154 243Z"/>
+  <circle class="bow-dot" cx="150" cy="240" r="7"/>
+  <g class="specials">
+    <circle class="star" cx="65" cy="150" r="5"/><circle class="star" cx="235" cy="150" r="5"/>
+  </g>
+
+  <g class="skin-accessory">
+    <path class="accessory-crown" d="M112 83L121 62L137 77L150 57L163 77L179 62L188 83Z"/>
+    <circle class="accessory-dot" cx="150" cy="67" r="5"/>
+    <path class="accessory-flower" d="M150 82c-7-12-24-5-17 7c-12-2-16 15-3 18c-7 10 7 21 17 12c10 9 24-2 17-12c13-3 9-20-3-18c7-12-10-19-17-7Z"/>
+    <circle class="accessory-flower-center" cx="150" cy="96" r="6"/>
+    <path class="accessory-stars" d="M72 118l4 8l8 4l-8 4l-4 8l-4-8l-8-4l8-4Z M228 118l4 8l8 4l-8 4l-4 8l-4-8l-8-4l8-4Z"/>
+    <path class="accessory-scarf" d="M106 223Q150 246 194 223L187 239Q150 258 113 239Z"/>
+  </g>
+</svg>
+      </button>
+    </div>
+    <div class="clickme">✨ Kliknij mnie! ✨</div>
+    <div class="message" id="message">Każde kliknięcie daje Ci jedną łapkę 🐾</div>
+  </section>
+
+  <h2 class="shop-title">🐱 Sklepik z kotkami</h2>
+  <div class="shop" id="shop"></div>
+
+  <div class="footer">Mała stronka zrobiona specjalnie dla wyjątkowej osoby 💗<br><button class="reset-btn" onclick="resetGame()">↻ Reset postępu</button></div>
+</div>
+
+<div class="toast" id="toast">
+  <div class="big">💗</div>
+  <h2>Wiadomość dla Ciebie</h2>
+  <p id="toastText"></p>
+  <button onclick="closeToast()">Awww 🥹</button>
+</div>
+
+<script>
+const cats = [
+  {name:"Różowy Kiciuś", cost:0, cls:"cat-pink", emoji:"🌸", fur:"#ffb6d5", fur2:"#f58bb9", inner:"#ffd0e2", collar:"#fff"},
+  {name:"Błękitny Kiciuś", cost:75, cls:"cat-blue", emoji:"🩵", fur:"#a6e5f7", fur2:"#68c9e7", inner:"#d4f5ff", collar:"#fff"},
+  {name:"Lawendowy Kiciuś", cost:150, cls:"cat-purple", emoji:"💜", fur:"#ceb9f7", fur2:"#a384e6", inner:"#eadfff", collar:"#fff"},
+  {name:"Truskawkowy Kiciuś", cost:300, cls:"cat-strawberry", emoji:"🍓", fur:"#ff9eb4", fur2:"#ee6688", inner:"#ffd0da", collar:"#fff"},
+  {name:"Miodowy Kiciuś", cost:500, cls:"cat-honey", emoji:"🍯", fur:"#ffd98f", fur2:"#efa94f", inner:"#ffe9bd", collar:"#fff"},
+  {name:"Nocny Kiciuś", cost:750, cls:"cat-night", emoji:"🌙", fur:"#8998d9", fur2:"#596bb8", inner:"#c1cafa", collar:"#eef1ff"},
+  {name:"Chmurkowy Kiciuś", cost:1000, cls:"cat-cloud", emoji:"☁️", fur:"#edf9ff", fur2:"#acdff3", inner:"#fff", collar:"#8ed7ef"},
+  {name:"Księżycowy Kiciuś", cost:1500, cls:"cat-moon", emoji:"✨", fur:"#b3ddf7", fur2:"#76b9df", inner:"#e4f5ff", collar:"#ffd86a"}
+];
+
+const compliments = [
+'Jesteś moją ulubioną osobą na całym świecie. 💗',
+'Twój uśmiech potrafi rozjaśnić nawet najgorszy dzień. 🌸',
+'Kocham Cię bardziej, niż ten kotek kocha głaskanie. 🐱💗',
+'Jesteś naprawdę wyjątkowa i mam nadzieję, że o tym wiesz. 🩷',
+'Z Tobą każdy zwykły dzień staje się czymś pięknym. ✨',
+'Jesteś moim ulubionym powodem do uśmiechu. 💕',
+'Gdybym mógł, dałbym Ci milion serduszek. 💗',
+'Twoja obecność sprawia, że wszystko wydaje się trochę lepsze. 🩵',
+'Kocham Cię. Tak po prostu. Bardzo. ❤️',
+'Jesteś cudowna dokładnie taka, jaka jesteś. 🌷',
+'Masz w sobie coś, co zawsze poprawia mi humor. 🥹',
+'Ten kotek właśnie potwierdził: jesteś 10/10. 🐾',
+'Jesteś najładniejszą częścią mojego dnia. 💗',
+'Chciałbym móc zatrzymać każdą chwilę spędzoną z Tobą. ✨',
+'Twoje szczęście jest dla mnie naprawdę ważne. 🩷',
+'Jesteś moim małym powodem do wielkiego uśmiechu. 🌸',
+'Przy Tobie nawet cisza jest przyjemna. 💕',
+'Nie potrzebuję powodu, żeby Cię kochać. Po prostu Cię kocham. ❤️',
+'Jesteś kimś, kogo naprawdę chcę mieć blisko siebie. 🫶',
+'Ten kotek przynosi Ci oficjalne przypomnienie: jesteś cudowna. 🐱',
+'Twoje oczy są piękne, ale jeszcze piękniejszy jest Twój uśmiech. 💗',
+'Jesteś moją ulubioną osobą do wszystkiego. 🩷',
+'Zasługujesz na wszystkie piękne rzeczy na świecie. 🌷',
+'Chcę, żebyś zawsze wiedziała, jak bardzo jesteś dla mnie ważna. 💕',
+'Każda chwila z Tobą jest warta zapamiętania. ✨',
+'Jesteś moim ulubionym człowiekiem. 🥹',
+'Uwielbiam Cię bardziej, niż potrafię to opisać. 💗',
+'Twoje szczęście naprawdę potrafi uszczęśliwić mnie. 🌸',
+'Jesteś małym cudem w moim codziennym świecie. 🩵',
+'Jeśli dziś nikt Ci tego nie powiedział — jesteś niesamowita. 💕',
+'Ten kotek uważa, że powinnaś dostać przytulasa. 🐱🩷',
+'Jesteś powodem, dla którego częściej się uśmiecham. 💗',
+'Nie ma drugiej takiej osoby jak Ty. ✨',
+'Jesteś moim ulubionym wspomnieniem i moim ulubionym planem na przyszłość. 💕',
+'Kocham Twoją energię, Twój śmiech i po prostu Ciebie. ❤️',
+'Jesteś naprawdę kimś wyjątkowym. 🩷',
+'Chcę Ci przypominać, że jesteś kochana. 💗',
+'Twoja obecność jest moim małym szczęściem. 🌸',
+'Jesteś słodsza niż wszystkie kotki razem wzięte. 🐾',
+'Każdego dnia znajduję kolejny powód, żeby Cię uwielbiać. 💕',
+'Z Tobą świat ma trochę więcej kolorów. 🌈',
+'Jesteś moją ulubioną osobą, nawet jeśli ten kotek próbuje Cię przebić. 😭🐱',
+'Twoje „hej” potrafi poprawić mi humor. 💗',
+'Jesteś kimś, kogo nigdy nie chcę traktować jak oczywistość. 🩷',
+'Jesteś piękna na milion różnych sposobów. 🌷',
+'Chcę być przy Tobie zarówno w dobrych, jak i gorszych chwilach. 💕',
+'Masz ogromne miejsce w moim sercu. ❤️',
+'Jesteś moją ulubioną wiadomością, którą chcę dostawać każdego dnia. 💬💗',
+'Ten kotek mówi, że jesteś absolutnie przesłodka. 🐱',
+'Uwielbiam, kiedy się śmiejesz. 🩷',
+'Jesteś dla mnie ważniejsza, niż mogłoby się wydawać. 💗',
+'Chcę tworzyć z Tobą jak najwięcej pięknych wspomnień. ✨',
+'Jesteś moim ulubionym „co by było, gdybyśmy...”. 💕',
+'Niech ten dzień przypomni Ci, że ktoś bardzo Cię kocha. ❤️',
+'Jesteś powodem, dla którego zwykłe rzeczy mogą być wyjątkowe. 🌸',
+'Twoja obecność jest prezentem. 🎁💗',
+'Jesteś cudowną osobą i nigdy nie pozwól sobie wmówić inaczej. 🩷',
+'Ten kotek daje Ci wirtualnego przytulasa. 🐱🫂',
+'Chciałbym mieć nieskończoną liczbę łapek, żeby klikać Ci komplementy. 🐾',
+'Jesteś moim małym szczęściem. 💗',
+'Twoja radość jest jedną z moich ulubionych rzeczy. 🌸',
+'Kocham Cię za Ciebie — bez żadnych warunków. ❤️',
+'Jesteś naprawdę nie do zastąpienia. 🩷',
+'Przy Tobie chcę być najlepszą wersją siebie. ✨',
+'Jesteś osobą, o której myślę z uśmiechem. 💕',
+'Twój uśmiech powinien być chroniony jako dobro narodowe. 😭💗',
+'Ten kotek chciałby Ci powiedzieć, że jesteś wspaniała. 🐱',
+'Z Tobą nawet nudny dzień ma sens. 🌷',
+'Jesteś moim ulubionym człowiekiem do robienia niczego. 💕',
+'Chcę, żebyś zawsze czuła się kochana. ❤️',
+'Masz piękne serce. 🩷',
+'Jesteś jednym z najlepszych powodów, żeby się uśmiechać. 💗',
+'Nie wiem, jak to robisz, ale zawsze potrafisz mnie rozczulić. 🥹',
+'Jesteś absolutnie wyjątkowa. ✨',
+'Twoje szczęście jest warte miliona łapek. 🐾💗',
+'Kocham każdą małą chwilę, którą mogę spędzić z Tobą. ❤️',
+'Jesteś moją ulubioną osobą, koniec dyskusji. 😌💗',
+'Ten kotek właśnie wysłał Ci buziaka. 😽',
+'Jesteś piękniejsza, niż potrafią opisać słowa. 🌸',
+'Zawsze będę kibicować Twojemu szczęściu. 🩷',
+'Jesteś moim słodkim powodem do uśmiechu. 💕',
+'Chciałbym móc dać Ci tyle szczęścia, ile Ty dajesz mi. 💗',
+'Twoja obecność sprawia, że czuję się lepiej. 🌷',
+'Jesteś kimś naprawdę, naprawdę ważnym dla mnie. ❤️',
+'Ten kotek ma rację: zasługujesz na wszystko, co najlepsze. 🐱✨',
+'Uwielbiam Twoją wyjątkowość. 🩷',
+'Jesteś moją małą dawką szczęścia każdego dnia. 💗',
+'Jeżeli to czytasz, to właśnie dostałaś kolejny powód do uśmiechu. 😊💕',
+'Jesteś niesamowita. To wszystko. Koniec komunikatu. 🫡💗',
+'Chcę, żebyś wiedziała, że bardzo Cię kocham. ❤️',
+'Twoje miejsce w moim sercu jest już zajęte na stałe. 🩷',
+'Jesteś najlepszą niespodzianką, jaka mogła mi się przydarzyć. 🎀',
+'Ten kotek uważa, że powinnaś się teraz uśmiechnąć. 🐱💕',
+'Każda łapka na tej stronie jest małym „kocham Cię”. 🐾❤️',
+'Jesteś dla mnie naprawdę bezcenna. 💗',
+'Niech ten komplement zostanie z Tobą na cały dzień. 🌸',
+'Jesteś moją ulubioną osobą. I tak, będę to powtarzać. 😭💗',
+'Masz w sobie mnóstwo dobra i piękna. 🩷',
+'Kocham Cię dzisiaj, jutro i we wszystkie zwykłe dni pomiędzy. ❤️',
+'Jesteś moim małym kawałkiem szczęścia. 💕',
+'Na koniec ważna wiadomość: bardzo się cieszę, że jesteś. 💗'
+];
+
+let state = JSON.parse(localStorage.getItem("sweetCatSaveV7") || "null") || {
+  paws:0, owned:[0], selected:0
+};
+if (!Array.isArray(state.owned)) state.owned=[0];
+state.owned = state.owned.filter(i => Number.isInteger(i) && i >= 0 && i < cats.length);
+if (!state.owned.includes(0)) state.owned.unshift(0);
+if (!cats[state.selected] || !state.owned.includes(state.selected)) state.selected=0;
+
+const pawsEl=document.getElementById("paws");
+const catButton=document.getElementById("catButton");
+const message=document.getElementById("message");
+const shop=document.getElementById("shop");
+const toast=document.getElementById("toast");
+const toastText=document.getElementById("toastText");
+
+function save(){localStorage.setItem("sweetCatSaveV7",JSON.stringify(state))}
+function applySkin(){
+ const svg = catButton.querySelector("svg.cat");
+ if (!svg) return;
+ const skin = cats[state.selected];
+ svg.setAttribute("class", "cat " + skin.cls);
+ svg.style.setProperty("--fur", skin.fur);
+ svg.style.setProperty("--fur2", skin.fur2);
+ svg.style.setProperty("--inner", skin.inner);
+ svg.style.setProperty("--collar", skin.collar);
+ svg.classList.remove("skin-equip");
+ void svg.offsetWidth;
+ svg.classList.add("skin-equip");
+}
+function update(){
+ pawsEl.textContent=state.paws;
+ applySkin();
+ renderShop();
+ save();
+}
+function renderShop(){
+  shop.innerHTML = "";
+
+  cats.forEach((c, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const preview = document.createElement("div");
+    preview.className = "mini";
+    preview.innerHTML = `
+      <svg class="cat" data-skin="${i}" viewBox="0 0 300 300">
+        <path class="ear" d="M62 112C50 79 50 48 61 27C83 37 104 56 117 80C97 88 78 100 62 112Z"/>
+        <path class="ear" d="M238 112C250 79 250 48 239 27C217 37 196 56 183 80C203 88 222 100 238 112Z"/>
+        <path class="inner-ear" d="M70 78C67 60 67 49 68 43C82 50 94 61 102 74C90 77 80 82 70 88Z"/>
+        <path class="inner-ear" d="M230 78C233 60 233 49 232 43C218 50 206 61 198 74C210 77 220 82 230 88Z"/>
+        <circle class="body" cx="150" cy="162" r="106"/>
+        <ellipse class="cat-face" cx="150" cy="158" rx="83" ry="73"/>
+        <ellipse class="eye" cx="117" cy="153" rx="10" ry="13"/>
+        <ellipse class="eye" cx="183" cy="153" rx="10" ry="13"/>
+        <circle class="eye-shine" cx="114" cy="149" r="4"/>
+        <circle class="eye-shine" cx="180" cy="149" r="4"/>
+        <path class="nose" d="M141 171Q150 164 159 171Q157 180 150 182Q143 180 141 171Z"/>
+        <path class="mouth" d="M150 180Q145 190 136 188M150 180Q155 190 164 188"/>
+        <ellipse class="paw" cx="83" cy="229" rx="35" ry="26"/>
+        <ellipse class="paw" cx="217" cy="229" rx="35" ry="26"/>
+        <circle class="blush" cx="96" cy="182" r="10"/>
+        <circle class="blush" cx="204" cy="182" r="10"/>
+        <path class="collar" d="M102 224Q150 249 198 224Q191 244 150 252Q109 244 102 224Z"/>
+        <path class="bow" d="M150 239L126 226Q111 222 113 238Q115 251 146 243ZM150 239L174 226Q189 222 187 238Q185 251 154 243Z"/>
+        <circle class="bow-dot" cx="150" cy="240" r="7"/>
+
+        <g class="skin-accessory">
+                <path class="accessory-crown" d="M112 83L121 62L137 77L150 57L163 77L179 62L188 83Z"/>
+                <circle class="accessory-dot" cx="150" cy="67" r="5"/>
+                <path class="accessory-flower" d="M150 82c-7-12-24-5-17 7c-12-2-16 15-3 18c-7 10 7 21 17 12c10 9 24-2 17-12c13-3 9-20-3-18c7-12-10-19-17-7Z"/>
+                <circle class="accessory-flower-center" cx="150" cy="96" r="6"/>
+                <path class="accessory-stars" d="M72 118l4 8l8 4l-8 4l-4 8l-4-8l-8-4l8-4Z M228 118l4 8l8 4l-8 4l-4 8l-4-8l-8-4l8-4Z"/>
+                <path class="accessory-scarf" d="M106 223Q150 246 194 223L187 239Q150 258 113 239Z"/>
+        </g>
+      </svg>`;
+
+    const name = document.createElement("h3");
+    name.textContent = c.emoji + " " + c.name;
+
+    const button = document.createElement("button");
+
+    const owned = state.owned.includes(i);
+    const selected = state.selected === i;
+
+    if (selected) {
+      button.textContent = "✓ Wybrany";
+      button.className = "owned";
+      button.disabled = true;
+    } else if (owned) {
+      button.textContent = "Wybierz";
+      button.onclick = function(){
+        state.selected = i;
+        update();
+        message.textContent = "💗 Wybrano " + c.name + "!";
+      };
+    } else {
+      button.textContent = "🐾 " + c.cost;
+      button.disabled = state.paws < c.cost;
+      button.onclick = function(){
+        if (state.paws >= c.cost && !state.owned.includes(i)) {
+          // Kup skina: odejmij cenę i natychmiast go załóż.
+          state.paws = state.paws - c.cost;
+          state.owned.push(i);
+          state.selected = i;
+
+          // Odśwież licznik łapek, głównego kotka i sklep.
+          update();
+          message.textContent = "✨ Kupiłaś " + c.name + " i właśnie go założyłaś! 💗";
+        }
+      };
+    }
+
+    const previewSvg = preview.querySelector("svg");
+    previewSvg.setAttribute("class", "cat " + c.cls);
+    card.appendChild(preview);
+    card.appendChild(name);
+    card.appendChild(button);
+    shop.appendChild(card);
+  });
+}
+function resetGame(){
+  localStorage.removeItem("sweetCatSaveV7");
+  state={paws:0,owned:[0],selected:0};
+  update();
+  message.textContent="Postęp został wyzerowany 🐾💗";
+}
+function heart(x,y){
+ const h=document.createElement("div"); h.className="heart";
+ h.textContent=["💗","💕","💖","💞","🩷"][Math.floor(Math.random()*5)];
+ h.style.left=x+"px"; h.style.top=y+"px";
+ h.style.setProperty("--x",(Math.random()*180-90)+"px");
+ h.style.setProperty("--r",(Math.random()*50-25)+"deg");
+ document.body.appendChild(h); setTimeout(()=>h.remove(),1200);
+}
+function showCompliment(){
+  const sweetMessages = [
+    "Jesteś najcudowniejszą osobą na świecie 💗",
+    "Kocham Cię bardziej niż wszystkie łapki razem 🐾💕",
+    "Mój ulubiony człowiek na zawsze 🥹💗",
+    "Jesteś moim małym szczęściem 🌸",
+    "Z Tobą wszystko jest słodsze 💕",
+    "Jesteś absolutnie wyjątkowa ✨💗",
+    "Najlepsza dziewczyna? Zdecydowanie Ty 🩷",
+    "Kocham Twój uśmiech najbardziej na świecie 🥰",
+    "Gdybym mógł, dałbym Ci milion serduszek 💖",
+    "Jesteś moim ulubionym powodem do uśmiechu 💕"
+  ];
+  message.textContent = sweetMessages[Math.floor(Math.random()*sweetMessages.length)];
+  message.classList.add("show");
+  clearTimeout(window.__sweetMessageTimer);
+  window.__sweetMessageTimer = setTimeout(()=>{
+    message.classList.remove("show");
+  },5000);
+}
+function closeToast(){toast.classList.remove("show")}
+
+
+function blinkCat(){
+  const eyes=catButton.querySelectorAll("ellipse.eye");
+  if(!eyes.length) return;
+  eyes.forEach(eye=>eye.setAttribute("ry","2"));
+  setTimeout(()=>{
+    eyes.forEach(eye=>eye.setAttribute("ry","13"));
+  },100);
+}
+
+catButton.addEventListener("click",(e)=>{
+ blinkCat();
+ state.paws++;
+ const rect=catButton.getBoundingClientRect();
+ for(let i=0;i<4;i++) setTimeout(()=>heart(
+   e.clientX+(Math.random()*70-35), e.clientY+(Math.random()*40-20)
+ ),i*70); if(state.paws % 50 === 0){ showCompliment(); } else { message.textContent="Każde kliknięcie daje Ci jedną łapkę 🐾"; message.classList.remove("show"); }
+ update();
+});
+
+update();
+</script>
+</body>
+</html>
+
+
